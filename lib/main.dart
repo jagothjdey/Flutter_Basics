@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-// feature branch added
+import './question.dart';
 
 void main() => runApp(MyApp());
 
@@ -40,7 +39,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Text(
+            Question(
               questions[_questionIndex],
             ),
             Column(
