@@ -14,25 +14,29 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
-  // ignore: unused_element
-  void _answerQuestionFirst() {
+  void _answerQuestion() {
     setState(() {
-      _questionIndex = 0;
-    });
-  }
-
-  // ignore: unused_element
-  void _answerQuestionSecond() {
-    setState(() {
-      _questionIndex = 1;
+      if (_questionIndex <= 1) {
+        _questionIndex++;
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     var questions = [
-      'What\'s your mother name',
-      'What\'s your father name',
+      {
+        'questionText': 'What\'s yout favorite color',
+        'answer': ['Black', 'Blue', 'Red', 'White'],
+      },
+      {
+        'questionText': 'What\'s yout favorite car',
+        'answer': ['BMW', 'Audi', 'Benz', 'Volvo'],
+      },
+      {
+        'questionText': 'What\'s yout favorite animal',
+        'answer': ['Cow', 'Cat', 'Dog', 'Snake'],
+      }
     ];
 
     return MaterialApp(
@@ -43,20 +47,11 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(
-              questions[_questionIndex],
+              questions[_questionIndex]['questionText'],
             ),
-            Column(
-              children: [
-                Answer(
-                  _answerQuestionFirst,
-                  questions[0],
-                ),
-                Answer(
-                  _answerQuestionSecond,
-                  questions[1],
-                ),
-              ],
-            )
+            ...(questions[_questionIndex]['answer'] as List<String>)
+                .map((answer) => Answer(_answerQuestion, answer))
+                .toList()
           ],
         ),
       ),
