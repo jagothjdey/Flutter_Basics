@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './answer.dart';
 import './question.dart';
 
 void main() => runApp(MyApp());
@@ -13,12 +14,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
+  // ignore: unused_element
   void _answerQuestionFirst() {
     setState(() {
       _questionIndex = 0;
     });
   }
 
+  // ignore: unused_element
   void _answerQuestionSecond() {
     setState(() {
       _questionIndex = 1;
@@ -44,13 +47,13 @@ class _MyAppState extends State<MyApp> {
             ),
             Column(
               children: [
-                RaisedButton(
-                  child: Text(questions[0]),
-                  onPressed: _answerQuestionFirst,
+                Answer(
+                  _answerQuestionFirst,
+                  questions[0],
                 ),
-                RaisedButton(
-                  child: Text(questions[1]),
-                  onPressed: _answerQuestionSecond,
+                Answer(
+                  _answerQuestionSecond,
+                  questions[1],
                 ),
               ],
             )
