@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './quiz.dart';
+import './result.dart';
 
 // rebasing done
 
@@ -46,14 +47,12 @@ class _MyAppState extends State<MyApp> {
           title: Text('My First Flutter App'),
         ),
         body: _questionIndex < _questions.length
-            ? Quiz(_questions, _answerQuestion, _questionIndex)
-            : Center(
-                child: Text(
-                  'You did it',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
+            ? Quiz(
+                questionIndex: _questionIndex,
+                questionList: _questions,
+                questionhandler: _answerQuestion,
+              )
+            : Result(),
       ),
     );
   }

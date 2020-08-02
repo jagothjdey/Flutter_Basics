@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'Result Here',
+    return Center(
+      child: Text(
+        'You did it',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 30),
+      ),
     );
   }
 }
